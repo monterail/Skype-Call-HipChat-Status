@@ -16,7 +16,7 @@ $ ./install.sh
 ## Running in development
 
 ```bash
-$ osascript -l JavaScript sync.js
+$ osascript -l JavaScript SkypeHipchat.js
 ```
 
 ## Resources
