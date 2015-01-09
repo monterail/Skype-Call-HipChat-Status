@@ -8,6 +8,11 @@ When the Skype call ends it will set your HipChat status back to Available
 - HipChat 3.1.x
 - Skype 6 (Skype 7 hasn't been tested yet)
 
+## Installation
+```
+$ ./install.sh
+```
+
 ## Running in development
 
 ```bash
