@@ -39,7 +39,8 @@ function HipChat(){
     return (SystemEvents.processes.whose({ name: 'HipChat' }).length > 0)
   }
 
-  this.setStatus = function(status, message){
+
+  setStatusViaSlash = function(status, message){
     // HipChat is not scriptable, so we need to use SystemEvents
     var Dock = SystemEvents.processes["Dock"]
     var HipChat = Dock.lists[0].uiElements["HipChat"]
@@ -64,6 +65,31 @@ function HipChat(){
 
     // Bring back previous application to front
     SystemEvents.keyCode(48, { using: "command down" }) // Cmd+Tab
+
+  }
+
+  setStatusViaDock = function(status){
+    // HipChat is not scriptable, so we need to use SystemEvents
+    var Dock = SystemEvents.processes["Dock"]
+    var HipChat = Dock.lists[0].uiElements["HipChat"]
+
+    var statusMap = {
+      "available":  0,
+      "away":       1,
+      "dnd":        2
+    }
+
+    HipChat.actions["AXShowMenu"].perform()
+    HipChat.menus[0].menuItems["Status"].click()
+    HipChat.menus[0].menuItems["Status"].menus[0].menuItems[statusMap[status]].click()
+  }
+
+  this.setStatus = function(status, message){
+    if(message) {
+      setStatusViaSlash(status, message)
+    } else {
+      setStatusViaDock(status)
+    }
   }
 
   this.getStatus = function(){
