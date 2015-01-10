@@ -3,6 +3,8 @@
 This little tool will set your HipChat status to Do Not Disturb with "Skype" message if there is an active Skype call.
 When the Skype call ends it will set your HipChat status back to Available
 
+### [Demo](https://v.usetapes.com/6uNX9BZLu6)
+
 ## Requirements
 - OS X 10.10 Yosemite
 - HipChat 3.1.x
